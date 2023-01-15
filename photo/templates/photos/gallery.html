@@ -17,6 +17,7 @@
  <style>
   .image-thumbail{
     height: 200px;
+    object-fit: cover;
   }
     
   </style>
@@ -35,6 +36,9 @@
             <li class="list-group-item">An item</li>
             <li class="list-group-item">A second item</li>
             <li class="list-group-item">A third item</li>
+
+              <a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1"> Add Photo</a>
+           
           </ul>
          </div>
        </div>
