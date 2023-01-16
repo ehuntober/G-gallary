@@ -18,27 +18,38 @@
      <div class="col-md-4">
        <a href="{% url 'gallery' %}"class='btn btn-dark my-3'> Go back </a>
      <div class="card">
-        <form>
+        <form method="POST" action="" enctype="multipart/form-data">
+          {% csrf_token %}
             <div class="form-group m-3">
                 <label>Description</label>
-                <input name="description" type="text"  placeholder = "Enter a description " class="form-control">
+                <input required name="description" type="text"  placeholder = "Enter a description " class="form-control">
             </div>
                
             <div class="form-group m-3">
                 <label>Select a Category </label>
                 <select name="category"   class="form-control">
                     <option value="none">Select a category...</option>
+
                     {% for category in categories %}
+
                     <option value="{{category.id}}">{{category.name}}</option>
+
                     {% endfor %}
                 
                 </select>
               </div>
 
+              <div class="form-group m-3">
+                <label>Create new Category </label>
+                <input name="category_new" type="text"  placeholder = "Create new Category " class="form-control">
+            </div>
+
             <div class="form-group m-3">
               <label>Upload Image</label>
-              <input name="image" type="file" class="form-control-file">
+              <input required name="image" type="file" class="form-control-file">
             </div>
+
+            <button type="submit" class="btn btn-primary m-3">submit</button>
           </form>
 
     </div>
