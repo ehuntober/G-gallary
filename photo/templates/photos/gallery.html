@@ -33,9 +33,10 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">All</li>
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
+            {% for category in categories %}
+            <li class="list-group-item">{{category.name}}</li>
+            {% endfor %}
+
 
               <a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1"> Add Photo</a>
            
@@ -46,53 +47,20 @@
 
        <div class="col-md-9">
         <div class="row">
+          {% for photo in photos %}
           <div class="col-md-4">
             <div class="card">
-              <img src="{% static 'images/cat.jpeg' %}" class="image-thumbail" alt="...">
+              <img src="{{ photo.image.url}}" class="image-thumbail" alt="...">
               <div class="card-body">
-                <small> Category : Pets</small>
-                <a  href="{% url 'photo' 5%}" class ="btn btn-outline-dark btn-sm m-1 ">View</a>
+                <small> Category : {{photo.category.name}}</small>
+                <a  href="{% url 'photo' photo.id %}" class ="btn btn-outline-dark btn-sm m-1 ">View</a>
               </div>
             </div>
           </div>
+          {% empty %} 
+          <h3> No photo ...</h3>
 
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{% static 'images/cat.jpeg' %}" class="image-thumbail" alt="...">
-              <div class="card-body">
-                <small> Category : Pets</small>
-                <a href="{% url 'photo' 5%}" class ="btn btn-outline-dark btn-sm m-1 ">View</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{% static 'images/cat.jpeg' %}" class="image-thumbail" alt="...">
-              <div class="card-body">
-                <small> Category : Pets</small>
-                <a  href="{% url 'photo' 5%}" class ="btn btn-outline-dark btn-sm m-1 ">View</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{% static 'images/cat.jpeg' %}" class="image-thumbail" alt="...">
-              <div class="card-body">
-                <small> Category : Pets</small>
-                <a  href="{% url 'photo' 5%}" class ="btn btn-outline-dark btn-sm m-1 ">View</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{% static 'images/cat.jpeg' %}" class="image-thumbail" alt="...">
-              <div class="card-body">
-                <small> Category : Pets</small>
-                <a  href="{% url 'photo' 5%}" class ="btn btn-outline-dark btn-sm m-1 ">View</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
 
        </div>
 
