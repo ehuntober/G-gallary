@@ -32,6 +32,8 @@ def addPhoto(request):
             description=data['description'],
             image = image
         )
+        
+        return redirect('gallery')
     
     
     context = {"categories": categories}
